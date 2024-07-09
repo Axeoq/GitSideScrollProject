@@ -38,6 +38,8 @@ public class PlayerPositionHandler : MonoBehaviour
     public void OnFinal()
     {
         playerPositionData.ResetData();
+        GameManager.instance.ChangeLevel(1);
+        GameManager.instance.ChangeScene(0);
     }
 
     private void ChangePlayerPosition (Vector2 newPosition)

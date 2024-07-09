@@ -16,22 +16,22 @@ public class UIGameplay : MonoBehaviour
 
     private void Start() 
     {
-        buttonMenu.onClick.AddListener(() => GameManager.Instance.ChangeScene(sceneIndex));
+        buttonMenu.onClick.AddListener(() => GameManager.instance.ChangeScene(sceneIndex));
         buttonPause.onClick.AddListener(HandleButtonClick);
         buttonResume.onClick.AddListener(HandleButtonClick);
     }
 
     private void HandleButtonClick()
     {
-        if(GameManager.Instance.isPaused)
+        if(GameManager.instance.isPaused)
         {
-            GameManager.Instance.Resume();
+            GameManager.instance.Resume();
             buttonPause.gameObject.SetActive(true);
             buttonResume.gameObject.SetActive(false);
         }
         else
         {
-            GameManager.Instance.Pause();
+            GameManager.instance.Pause();
             buttonPause.gameObject.SetActive(false);
             buttonResume.gameObject.SetActive(true);
         }

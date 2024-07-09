@@ -7,11 +7,11 @@ public class UIMenu : MonoBehaviour
 {
     void Start()
     {
-        GameManager.Instance.CheckSaveFile();
-        levelCurrent = GameManager.Instance.levelCurrent;
+        GameManager.instance.CheckSaveFile();
+        levelCurrent = GameManager.instance.levelCurrent;
         AddChangeSceneListeners();
         DisableLockedLevel();
-        //CheckStartPanelExp();
+        CheckStartPanelExp();
     }
 
     #region Level Interface Management
@@ -25,7 +25,7 @@ public class UIMenu : MonoBehaviour
         for (int i = 0; i < levelButtons.Length; i++)
         {
             int sceneIndex = i + 1; 
-            levelButtons[i].onClick.AddListener(() => GameManager.Instance.ChangeScene(sceneIndex));
+            levelButtons[i].onClick.AddListener(() => GameManager.instance.ChangeScene(sceneIndex));
         }
     }
     private void DisableLockedLevel()
@@ -37,6 +37,43 @@ public class UIMenu : MonoBehaviour
                 levelButtons[i].interactable = false;
             }   
         }
+    }
+    #endregion 
+
+    #region Panel Management
+    [Header("Panel Start")]
+    public GameObject startPanel;
+    [Header("Panel Level")]
+    public GameObject levelPanel;
+
+    public void ShowStartPanel()
+    {
+        startPanel.SetActive(true);
+        levelPanel.SetActive(false);
+    }
+
+    public void ShowLevelPanel() 
+    {
+        startPanel.SetActive(false);
+        levelPanel.SetActive(true);
+        GameManager.instance.isStart = true;
+    }
+    
+    private void CheckStartPanelExp()
+    {
+        if (isStart())
+        {
+            ShowLevelPanel();
+        }
+        else
+        {
+            ShowStartPanel();
+        }
+    }
+
+    private bool isStart()
+    {
+        return GameManager.instance.isStart;
     }
     #endregion
 }

@@ -7,13 +7,13 @@ using System.IO;
 public class GameManager : MonoBehaviour
 {
     #region Game Manager
-    public static GameManager Instance;
+    public static GameManager instance;
 
     void Awake()
     {
-        if(Instance == null)
+        if(instance == null)
         {
-            Instance = this;
+            instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else 
@@ -93,4 +93,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion 
 
+    #region Panel Management Data
+    public bool isStart;
+    #endregion
 }

@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
 
         ///groundLayer = LayerMask.GetMask("Ground");
+        
         animator = GetComponent <Animator>();
     }
 
